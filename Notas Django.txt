@@ -1,0 +1,41 @@
+Instalación
+
+* Dentro del entorno virtual
+- pip install django -U 	-U: última versión
+
+* Interfaz con los comandos de django que permite correr subcomandos
+django-admin
+
+* Crear proyecto
+django-admin startproject project-name (path or .)
+
+* Comandos de gestión de proyecto
+py manage.py
+
+* Iniciar un servidor
+py manage.py runserver
+
+* Buenas prácticas de importación de bibliotecas
+1.- Standard library imports.
+2.- Imports from core Django.
+3.- Imports from third-party apps including those unrelated to Django.
+4.- Imports from the apps that you created as part of your Django project.
+
+* Crear App dentro de Django
+py manage.py startapp appName
+    migrations: Se encarga de grabar los cambios en la base de datos
+    admin.py: registra los modelos en el administrador de django
+    apps.py: declara la configuracion de la app y la permite hacer pública
+    models.py: definicion de modelos
+    tests.py: pruebas
+    views.py: vistas    
+
+* Migraciones
+py manage.py makemigrations: Refleja en un archivo los cambios realizados en los modelos
+py manage.py migrate: Aplica los cambios en la BD  
+
+* Shell
+py manage.py Shell
+
+* Super Usuario
+py manage.py createsuperuser
