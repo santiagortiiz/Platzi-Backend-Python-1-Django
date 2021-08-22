@@ -21,7 +21,7 @@ py manage.py runserver
 3.- Imports from third-party apps including those unrelated to Django.
 4.- Imports from the apps that you created as part of your Django project.
 
-* Crear App dentro de Django
+* Crear App dentro de Django (App: Grupo de Funcionalidades agrupadas para resolver una tarea)
 py manage.py startapp appName
     migrations: Se encarga de grabar los cambios en la base de datos
     admin.py: registra los modelos en el administrador de django
@@ -33,9 +33,14 @@ py manage.py startapp appName
 * Migraciones
 py manage.py makemigrations: Refleja en un archivo los cambios realizados en los modelos
 py manage.py migrate: Aplica los cambios en la BD  
+Comando Fusionado: py manage.py makemigrations && py manage.py migrate
 
 * Shell
 py manage.py Shell
 
 * Super Usuario
 py manage.py createsuperuser
+
+* Extender el modelo de gestion de usuarios
+1) Método Proxy
+- Crear App: py manage.py startapp users (No olvidar agregarla en settings.py)

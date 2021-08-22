@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
 	# Aca irian las apps de nuestros proyectos que vamoss a instalar, cosas como posts, perfiles, nosé
     'posts',
+    'users',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
