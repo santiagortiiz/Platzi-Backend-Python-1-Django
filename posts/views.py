@@ -4,6 +4,7 @@ import pdb # Python debugger
 # Django Core
 from django.shortcuts import render
 from django.http import HttpResponse, response, JsonResponse
+from django.contrib.auth.decorators import login_required
 
 # Utilities
 import json
@@ -40,7 +41,7 @@ posts = [
     }
 ]
 
-def list_posts(request):
+def list_posts_deleted(request):
     content = []
     for post in posts:
         content.append(f"""
@@ -61,4 +62,10 @@ def list_posts_test(request):
     # return JsonResponse(posts, safe=False)
     
 def template_testing(request):
-    return render(request, 'feed.html', {'context': 'ViewContext testing', 'posts': posts})
+    # return render(request, 'feed.html', {'context': 'ViewContext testing', 'posts': posts})
+    return render(request, 'posts/feed.html', {'context': 'ViewContext testing', 'posts': posts})
+
+@login_required
+def list_posts(request):
+    # return render(request, 'feed.html', {'context': 'ViewContext testing', 'posts': posts})
+    return render(request, 'posts/feed.html', {'context': 'ViewContext testing', 'posts': posts})

@@ -8,7 +8,8 @@ from users.models import Profile
 # Register your models here.
 # admin.site.register(Profile)      # Alternative
 
-@admin.register(Profile)    # Decorador encargado de registrar el modelo
+# Decorator in charge of registering the model in the admin panel
+@admin.register(Profile)    
 class ProfileAdmin(admin.ModelAdmin):
 
     list_display = ('pk', 'user', 'phone_number', 'website', 'picture')
@@ -32,6 +33,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'modified',
     )
 
+    # UI
     fieldsets = (
         # (Category Title, { fields: ( 
         #   (row1 col1, row1 col2), 

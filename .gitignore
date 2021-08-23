@@ -1,3 +1,5 @@
 .env
 Recursos
 db.sqlite3
+static/img
+media
