@@ -14,10 +14,11 @@ from django.contrib.auth.models import User
 from users.models import Profile
 
 # Forms
-from users.forms import ProfileForm
+from users.forms import ProfileForm, SignupForm
 
 # Create your views here.
 
+@login_required
 def update_profile(request):
     """Update a user's profile view."""
     # return render(request, 'users/update_profile.html')
@@ -54,7 +55,7 @@ def update_profile(request):
         }
     )
 
-def signup_view(request):
+def unused_signup(request):
     """Sign up view."""
     if request.method == 'POST':
         username = request.POST['username']
@@ -80,6 +81,23 @@ def signup_view(request):
         return redirect('login')
 
     return render(request, 'users/signup.html')
+
+def signup_view(request):
+    """Sign up view."""
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = SignupForm()
+
+    return render(
+        request=request,
+        template_name='users/signup.html',
+        context={'form': form}
+    )
+
 
 def login_view(request):
     """Login view."""
