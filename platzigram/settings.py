@@ -52,13 +52,16 @@ LOCAL_APPS = (
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware', # https, host...
+    'django.contrib.sessions.middleware.SessionMiddleware', # Sesion validator
+    'django.middleware.common.CommonMiddleware', # Debug and related to the framework
+    'django.middleware.csrf.CsrfViewMiddleware', # Token injection, Cross services... 
+    'django.contrib.auth.middleware.AuthenticationMiddleware', # acceso a req.user desde cualquier template || anonymous user
+    'django.contrib.messages.middleware.MessageMiddleware', # messagin between framework components
+    'django.middleware.clickjacking.XFrameOptionsMiddleware', # Security
+    
+    # Own Middlewares
+    'platzigram.middleware.ProfileCompletionMiddleware',
 ]
 
 ROOT_URLCONF = 'platzigram.urls'

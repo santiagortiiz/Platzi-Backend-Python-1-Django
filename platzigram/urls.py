@@ -35,6 +35,9 @@ urlpatterns = [
     path('posts_test/', posts_views.list_posts_test),
     path('template_testing/', posts_views.template_testing),
 
+    path('users/signup/', user_views.signup_view, name='signup'),
     path('users/login/', user_views.login_view, name='login'),
+    path('users/logout/', user_views.logout_view, name='logout'),
+    path('users/me/profile', user_views.update_profile, name='update_profile'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
