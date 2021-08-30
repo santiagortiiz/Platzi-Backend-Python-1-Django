@@ -6,6 +6,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, response, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+
+from django.views.generic import CreateView, DetailView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Models
 from posts.models import Post
@@ -52,6 +56,37 @@ posts = [
     }
 ]
 
+class PostsFeedView(LoginRequiredMixin, ListView):
+    """Return all published posts."""
+
+    template_name = 'posts/feed.html'
+    model = Post
+    ordering = ('-created',)
+    paginate_by = 2
+    context_object_name = 'posts'
+
+class PostDetailView(LoginRequiredMixin, DetailView):
+    """Return post detail."""
+
+    template_name = 'posts/detail.html'
+    queryset = Post.objects.all()
+    context_object_name = 'post'
+
+
+class CreatePostView(LoginRequiredMixin, CreateView):
+    """Create a new post."""
+
+    template_name = 'posts/new.hTml'
+    form_class = PostForm
+    success_url = reverse_lazy('posts:feed') # don't evaluate until needed
+
+    def get_context_data(self, **kwargs):
+        """Add user and profile to context."""
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        context['profile'] = self.request.user.profile
+        return context
+
 def list_posts_deleted(request):
     content = []
     for post in posts:
@@ -95,7 +130,7 @@ def create_post(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('feed')
+            return redirect('posts:feed')
 
     else:
         form = PostForm()
