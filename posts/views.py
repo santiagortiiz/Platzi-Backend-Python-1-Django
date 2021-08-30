@@ -116,8 +116,9 @@ def template_testing(request):
 #     # return render(request, 'feed.html', {'context': 'ViewContext testing', 'posts': posts})
 #     return render(request, 'posts/feed.html', {'context': 'ViewContext testing', 'posts': posts})
 
-@login_required
+# @login_required
 def list_posts(request):
+    print('list_posts')
     """List existing posts."""
     posts = Post.objects.all().order_by('-created')
 

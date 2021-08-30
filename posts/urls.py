@@ -14,9 +14,9 @@ urlpatterns = [
         name='create'
     ),
     path(
-        route='posts',
+        route='list_posts/',
         view=views.list_posts,
-        name='feed_unused'
+        name='feed'
     ),
     
     path(

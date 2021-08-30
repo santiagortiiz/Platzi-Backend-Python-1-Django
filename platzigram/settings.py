@@ -148,6 +148,8 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/users/login/'
 # LOGIN_URL = 'login' # name of the url
+LOGIN_REDIRECT_URL = '/' # feed of posts
+LOGOUT_REDIRECT_URL = LOGIN_URL
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

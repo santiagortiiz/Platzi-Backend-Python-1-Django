@@ -22,6 +22,16 @@ urlpatterns = [
     # Management
     
     path(
+        route='login/',
+        view=views.LoginView.as_view(),
+        name='login'
+    ),
+    path(
+        route='logout/',
+        view=views.LogoutView.as_view(),
+        name='login'
+    ),
+    path(
         route='signup/',
         view=views.SignupView.as_view(),
         name='signup'
@@ -32,18 +42,19 @@ urlpatterns = [
         name='update'
     ),
 
+
     path(
         route='signup_view/',
         view=views.signup_view,
         name='signup'
     ),
     path(
-        route='login/',
+        route='login_view/',
         view=views.login_view,
         name='login'
     ),
     path(
-        route='logout/',
+        route='logout_view/',
         view=views.logout_view,
         name='logout'
     ),
