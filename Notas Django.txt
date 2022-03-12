@@ -33,6 +33,7 @@ py manage.py startapp appName
 * Migraciones
 py manage.py makemigrations: Refleja en un archivo los cambios realizados en los modelos
 py manage.py migrate: Aplica los cambios en la BD  
+python manage.py inspectdb: Genera modelos a partir de una BD
 
 * Shell
 py manage.py Shell
